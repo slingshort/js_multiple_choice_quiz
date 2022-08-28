@@ -1,3 +1,4 @@
+// establishing areas of html to target with script
 var startButton = document.querySelector('#start-btn');
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
@@ -9,6 +10,7 @@ var opt2Area = document.getElementById("2");
 var opt3Area = document.getElementById("3");
 var opt4Area = document.getElementById("4");
 
+// stores all questions in an array as objects
 let questions = [
     {question : "Commonly used data types do NOT include:",
     opt1: "1. Strings",
@@ -51,9 +53,11 @@ let questions = [
     },
 ]
 
+// sets questionIndex to 0 in local storage so that in the questionIndex++ fucntion, this can be incremented from the correct start point
 var questionIndex = localStorage.setItem("questionIndex",0);
 var questionIndex = localStorage.getItem("questionIndex");
 
+// function to call the questions stored in the array onto the html page
 function renderQuestion() {
 
     choices.addEventListener("click", function(event) {
@@ -74,6 +78,7 @@ function renderQuestion() {
     });
 }
 
+// fucntion to call a page which allows High score to be entered after questions have run out
 function highScore() {
     choices.addEventListener("click", function(event) {
         var element = event.target;
@@ -87,11 +92,7 @@ function highScore() {
     })
 }
 
-// function checkAnswer() {
-//    onClick = function() {
-//     console.log(this.id);
-//    }
-// }
+// function to check user choice against correct answer stored in the the array
 function checkAnswer() {
     
     let userChoice = []
@@ -106,14 +107,14 @@ function checkAnswer() {
     document.getElementById('3').onclick = onClick;
     document.getElementById('4').onclick = onClick;
 
-    if (questions[questionIndex].correct == userChoice[questionIndex]) {
+    // need to fix this
+    if (questions[questionIndex].correct.matches(userChoice[questionIndex])) {
+        
         console.log("yay!")
     }
-    
 }
 
-
-  
+// using click event to initialise all functions
 startButton.addEventListener("click", StartQuiz)
 
 function StartQuiz() {
@@ -123,12 +124,6 @@ function StartQuiz() {
     checkAnswer();
     highScore();
     console.log(questionIndex + " working");
-    
-
 }
 
-// function checkAnswer {
-//     if questions[questionIndex].correct.matches()
-
-// }
 
