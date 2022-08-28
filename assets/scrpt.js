@@ -58,7 +58,7 @@ function renderQuestion() {
 
     choices.addEventListener("click", function(event) {
         var element = event.target;
-        
+       
         if (element.matches("button") && questionIndex < questions.length) {
         
             questionIndex ++;
@@ -87,13 +87,43 @@ function highScore() {
     })
 }
 
+// function checkAnswer() {
+//    onClick = function() {
+//     console.log(this.id);
+//    }
+// }
+function checkAnswer() {
+    
+    let userChoice = []
+
+    const onClick = function() {
+        userChoice.push(this.id);
+        console.log(userChoice)
+    }
+
+    document.getElementById('1').onclick = onClick;
+    document.getElementById('2').onclick = onClick;
+    document.getElementById('3').onclick = onClick;
+    document.getElementById('4').onclick = onClick;
+
+    if (questions[questionIndex].correct == userChoice[questionIndex]) {
+        console.log("yay!")
+    }
+    
+}
+
+
+  
 startButton.addEventListener("click", StartQuiz)
 
 function StartQuiz() {
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
+    checkAnswer();
     highScore();
+    console.log(questionIndex + " working");
+    
 
 }
 
