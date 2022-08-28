@@ -59,7 +59,7 @@ function renderQuestion() {
     choices.addEventListener("click", function(event) {
         var element = event.target;
         
-        if (element.matches("button") && questionIndex <= questions.length) {
+        if (element.matches("button") && questionIndex < questions.length) {
         
             questionIndex ++;
             localStorage.setItem("questionIndex",questionIndex)
@@ -78,7 +78,7 @@ function highScore() {
     choices.addEventListener("click", function(event) {
         var element = event.target;
 
-        if(element.matches("button") && questionIndex > questions.length) {
+        if(element.matches("button") && questionIndex >= questions.length) {
             quiz.style.display = "none";
             submitScore.style.display = "block";
             console.log("Highscore")
