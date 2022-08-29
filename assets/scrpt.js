@@ -1,14 +1,25 @@
 // establishing areas of html to target with script
+var timerArea = document.getElementById("timeLeft")
 var startButton = document.querySelector('#start-btn');
 var start = document.getElementById("start");
 var quiz = document.getElementById("quiz");
 var questionArea = document.getElementById("question");
 var choices = document.getElementById("choices");
 var submitScore = document.getElementById("submitScore");
+var highscoreArea = document.getElementById("highscore");
 var opt1Area = document.getElementById("1");
 var opt2Area = document.getElementById("2");
 var opt3Area = document.getElementById("3");
 var opt4Area = document.getElementById("4");
+
+function startCountdown() {
+    var timeLeft = 75;
+    setInterval(function() {
+        timeLeft--;
+        timerArea.innerHTML = timeLeft;
+
+    },1000);
+}
 
 // stores all questions in an array as objects
 let questions = [
@@ -49,7 +60,7 @@ let questions = [
     opt2: "2. terminal/bash",
     opt3: "3. for loops",
     opt4: "4.console.log",  
-    correct: "4"
+    correct: "4",
     },
 ]
 
@@ -94,12 +105,13 @@ function highScore() {
 
 // function to check user choice against correct answer stored in the the array
 function checkAnswer() {
-    
+
     let userChoice = []
 
     const onClick = function() {
         userChoice.push(this.id);
-        console.log(userChoice)
+        // console.log(userChoice);
+        console.log(userChoice[questionIndex]);
     }
 
     document.getElementById('1').onclick = onClick;
@@ -107,23 +119,31 @@ function checkAnswer() {
     document.getElementById('3').onclick = onClick;
     document.getElementById('4').onclick = onClick;
 
-    // need to fix this
-    if (questions[questionIndex].correct.matches(userChoice[questionIndex])) {
-        
-        console.log("yay!")
+    if (userChoice[questionIndex] = questions[questionIndex.correct]) {
+        console.log("Correct answer")
+    } else {
+        console.log("Wrong answer")
     }
+
+    // // need to fix this
+    // if (questions[questionIndex].correct.matches(userChoice[questionIndex])) {
+        
+    //     console.log("yay!")
+    // }
 }
 
 // using click event to initialise all functions
 startButton.addEventListener("click", StartQuiz)
 
 function StartQuiz() {
+    startCountdown()
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
     checkAnswer();
     highScore();
     console.log(questionIndex + " working");
+    
 }
 
 
