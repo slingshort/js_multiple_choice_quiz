@@ -114,6 +114,7 @@ var score = localStorage.getItem("score");
 // function to check user choice against correct answer stored in the the array "answers"
 function checkAnswer(clicked_answer) {
     console.log(clicked_answer + "was clicked")
+    var resultNotify = document.getElementById("result")
 
     // increment score with every correct answer
     if (clicked_answer === answers[questionIndex]){
