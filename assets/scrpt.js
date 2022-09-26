@@ -12,6 +12,7 @@ var opt2Area = document.getElementById("2");
 var opt3Area = document.getElementById("3");
 var opt4Area = document.getElementById("4");
 
+
 // writes timer function
 function startCountdown() {
     var timeLeft = 75;
@@ -91,7 +92,7 @@ function renderQuestions() {
     choices.addEventListener("click", function (event) {
         var element = event.target;
 
-        if (element.matches("button") && questionIndex <= questions.length) {
+        if (element.matches("button") && questionIndex < questions.length) {
             questionIndex++
             localStorage.setItem("questionIndex",questionIndex)
             console.log("current question index is " + questionIndex)
@@ -131,7 +132,7 @@ choices.addEventListener("click", function (event) {
     var element = event.target;
 
     // calling high score fucntion when questions run out
-    if (element.matches("button") && questionIndex > questions.length) {
+    if (element.matches("button") && questionIndex >= questions.length) {
         highScore()
     }
 })
@@ -141,7 +142,8 @@ function highScore() {
     quiz.style.display = "none";
     submitScore.style.display = "block";
     console.log("Highscore") 
-
+    var scoreValue = document.getElementById("scoreValue");
+    scoreValue.innerHTML = localStorage.getItem("score")
 }
 
 startButton.addEventListener("click", StartQuiz)
