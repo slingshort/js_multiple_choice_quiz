@@ -12,6 +12,7 @@ var opt2Area = document.getElementById("2");
 var opt3Area = document.getElementById("3");
 var opt4Area = document.getElementById("4");
 
+
 // writes timer function
 function startCountdown() {
     var timeLeft = 75;
@@ -91,7 +92,7 @@ function renderQuestions() {
     choices.addEventListener("click", function (event) {
         var element = event.target;
 
-        if (element.matches("button")) {
+        if (element.matches("button") && questionIndex < questions.length) {
             questionIndex++
             localStorage.setItem("questionIndex",questionIndex)
             console.log("current question index is " + questionIndex)
@@ -112,7 +113,7 @@ var score = localStorage.getItem("score");
 
 // function to check user choice against correct answer stored in the the array "answers"
 function checkAnswer(clicked_answer) {
-    console.log(clicked_answer)
+    console.log(clicked_answer + "was clicked")
 
     // increment score with every correct answer
     if (clicked_answer === answers[questionIndex]){
@@ -122,13 +123,11 @@ function checkAnswer(clicked_answer) {
         console.log("score is " + score)
     } else {
         console.log("incorrect answer")
-
     }
 
 }
 
 // fucntion to call a page which allows High score to be entered after questions have run out
-
 choices.addEventListener("click", function (event) {
     var element = event.target;
 
@@ -142,8 +141,22 @@ choices.addEventListener("click", function (event) {
 function highScore() {
     quiz.style.display = "none";
     submitScore.style.display = "block";
-    console.log("Highscore")
+    console.log("Highscore") 
+    var scoreValue = document.getElementById("scoreValue");
+    scoreValue.innerHTML = localStorage.getItem("score")
 }
+
+function submitHighscore (event) {
+
+    event.preventDefault();
+    var initials = document.getElementById("initials").value
+    localStorage.setItem("initials",initials)
+    window.location.assign('highscores.html')
+
+}
+
+var form = document.getElementById("form")
+form.addEventListener("submit", submitHighscore)
 
 
 startButton.addEventListener("click", StartQuiz)

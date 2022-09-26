@@ -1,13 +1,17 @@
 body {
     font-size: 30px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color: beige;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: white;
+    display: block;
+    justify-content: center; 
+
 }
 
 nav {
     display:flex;
     justify-content: space-between;
-    background-color: brown;
+    background-color: rgb(213, 177, 232);
+    padding: 2%
 }
 
 nav.timer {
@@ -15,7 +19,28 @@ nav.timer {
     justify-content: flex-end;
 }
 
+button {
+    background-color: rgb(86, 22, 146);
+    font-size: 20px;
+    color: white;
+    border-radius: 5%;
+    padding:20px;
+    border: 0cm;
+}
+
+button:hover {
+    background-color: rgb(166, 105, 222);
+}
+
 .quiz-section {
     display: flex;
     justify-content: center;
+}
+
+#initials {
+    padding:10px;
+    outline: 1px solid;
+    outline-color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
 }
