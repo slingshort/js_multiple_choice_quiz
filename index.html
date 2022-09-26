@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <title>Coding Quiz Challenge</title>
 </head>
 
 <nav>
-    <ul>
-        <li><a href=""> View High Scores</a></li>
-        <li><a>Time Left: <span id = "timeLeft"></span></a></li>
-    </ul>
+  
+    <a href="./highscores.html" class="HSlink"> View High Scores</a>
+    <a class = "timer">Time Left: <span id = "timeLeft"></span></a>
+
 </nav>
 
 <body>
@@ -23,28 +24,29 @@
             <button id="start-btn">Start Quiz</button>
         </div>
 
-        <div id="quiz" style="display: none">
+        <div class=quiz-section id="quiz" style="display: none">
             <div id="question"></div>
             <div id="choices">  
-                <ul><button class="choice" id="1" onclick="checkAnswer('1')"></button></ul>
-                <ul><button class="choice" id="2" onclick="checkAnswer('2')"></button></ul>
-                <ul><button class="choice" id="3" onclick="checkAnswer('3')"></button></ul>
-                <ul><button class="choice" id="4" onclick="checkAnswer('4')"></button></ul>
+                <ul><button class="choice" id="1" onClick="checkAnswer(this.id)" ></button></ul>
+                <ul><button class="choice" id="2" onClick="checkAnswer(this.id)" ></button></ul>
+                <ul><button class="choice" id="3" onClick="checkAnswer(this.id)" ></button></ul>
+                <ul><button class="choice" id="4" onClick="checkAnswer(this.id)" ></button></ul>
             </div>
         </div>   
 
         <div id="submitScore" style="display: none">
             <h1>All done!</h1>
-            <p>Your score is <span id="highscore"></span></p>
-            <p>
-                <label>Enter initials here:</label>
-                <textarea></textarea>
-            </p>
+            <p>Your score is <span id="score" ></span></p>
+            <div>
+                <h2>Enter initials here:</h2>
+                <input type="text" id="initials"></input>
+                <button> Submit Score </button>
+            </div>
 
         </div>
 
     </div>
 
-    <script src="./assets/scrpt.js"></script>
+    <script src="./assets/js/scrpt.js"></script>
 </body>
 </html>

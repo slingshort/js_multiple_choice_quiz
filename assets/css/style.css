@@ -1,0 +1,21 @@
+body {
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: beige;
+}
+
+nav {
+    display:flex;
+    justify-content: space-between;
+    background-color: brown;
+}
+
+nav.timer {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.quiz-section {
+    display: flex;
+    justify-content: center;
+}

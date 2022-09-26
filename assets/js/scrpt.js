@@ -91,7 +91,7 @@ function renderQuestions() {
     choices.addEventListener("click", function (event) {
         var element = event.target;
 
-        if (element.matches("button") && questionIndex <= questions.length) {
+        if (element.matches("button")) {
             questionIndex++
             localStorage.setItem("questionIndex",questionIndex)
             console.log("current question index is " + questionIndex)
@@ -112,7 +112,7 @@ var score = localStorage.getItem("score");
 
 // function to check user choice against correct answer stored in the the array "answers"
 function checkAnswer(clicked_answer) {
-    console.log(clicked_answer + "was clicked")
+    console.log(clicked_answer)
 
     // increment score with every correct answer
     if (clicked_answer === answers[questionIndex]){
@@ -122,16 +122,18 @@ function checkAnswer(clicked_answer) {
         console.log("score is " + score)
     } else {
         console.log("incorrect answer")
+
     }
 
 }
 
 // fucntion to call a page which allows High score to be entered after questions have run out
+
 choices.addEventListener("click", function (event) {
     var element = event.target;
 
     // calling high score fucntion when questions run out
-    if (element.matches("button") && questionIndex > questions.length) {
+    if (element.matches("button") && questionIndex >= questions.length) {
         highScore()
     }
 })
@@ -140,9 +142,9 @@ choices.addEventListener("click", function (event) {
 function highScore() {
     quiz.style.display = "none";
     submitScore.style.display = "block";
-    console.log("Highscore") 
-
+    console.log("Highscore")
 }
+
 
 startButton.addEventListener("click", StartQuiz)
 
